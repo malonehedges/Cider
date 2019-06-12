@@ -13,5 +13,6 @@ public enum Include: String {
     case albums
     case artists
     case genres
+    case playlists
     case tracks
 }
