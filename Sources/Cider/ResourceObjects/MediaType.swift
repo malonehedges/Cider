@@ -17,4 +17,5 @@ public enum MediaType: String, Codable {
     case curators
     case appleCurators = "apple-curators"
     case genres
+    case libraryPlaylists = "library-playlists"
 }
