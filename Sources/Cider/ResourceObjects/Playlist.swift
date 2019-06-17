@@ -31,9 +31,10 @@ public struct PlaylistAttributes: Codable {
     public let description: EditorialNotes?
     public let lastModifiedDate: String?
     public let name: String
-    public let playlistType: PlaylistType
+    public let playlistType: PlaylistType?
     public let playParams: PlayParameters?
-    public let url: URL
+    public let url: URL?
+    public let canEdit: Bool?
 }
 
 public struct PlaylistRelationships: Codable {
