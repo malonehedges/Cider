@@ -42,11 +42,12 @@ public struct Artwork: Codable {
      - returns: A `URL` for the specified width.
      */
     public func url(forWidth requestedWidth: Int) -> URL? {
-        if let width = width,
-            let height = height {
-            let width = min(requestedWidth, width)
-            let height = Int(Double(width) * Double(height) / Double(width))
-            let urlString = url.replacingOccurrences(of: "{w}", with: "\(width)").replacingOccurrences(of: "{h}", with: "\(height)")
+        if url.contains("{w}") {
+            let width = min(requestedWidth, self.width ?? requestedWidth)
+            let height = Int(Double(width) * Double(self.height ?? width) / Double(width))
+            let urlString = url
+                .replacingOccurrences(of: "{w}", with: "\(width)")
+                .replacingOccurrences(of: "{h}", with: "\(height)")
             return URL(string: urlString)
         } else {
             return URL(string: url)
