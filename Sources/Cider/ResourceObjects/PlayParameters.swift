@@ -9,4 +9,4 @@
 import Foundation
 
 /// An object that represents play parameters for resources.
-public typealias PlayParameters = [String: String]
+public typealias PlayParameters = [String: Any]
