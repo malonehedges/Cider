@@ -10,11 +10,11 @@ import Foundation
 
 /// An object that represents an artwork
 public struct Artwork: Codable {
-    /// The maximum width available for the image
-    public let width: Int
+    /// The maximum width available for the image, or nil if invalid Int
+    public let width: Int?
 
-    /// The maximum height available for the image
-    public let height: Int
+    /// The maximum height available for the image, or nil if invalid Int
+    public let height: Int?
 
     /// The URL to request the image asset. The image file name must be preceded by {w}x{h}, as placeholders for the width and height values
     public let url: String
@@ -42,9 +42,14 @@ public struct Artwork: Codable {
      - returns: A `URL` for the specified width.
      */
     public func url(forWidth requestedWidth: Int) -> URL? {
-        let width = min(requestedWidth, self.width)
-        let height = Int(Double(width) * Double(self.height) / Double(self.width))
-        let urlString = url.replacingOccurrences(of: "{w}", with: "\(width)").replacingOccurrences(of: "{h}", with: "\(height)")
-        return URL(string: urlString)
+        if let width = width,
+            let height = height {
+            let width = min(requestedWidth, width)
+            let height = Int(Double(width) * Double(height) / Double(width))
+            let urlString = url.replacingOccurrences(of: "{w}", with: "\(width)").replacingOccurrences(of: "{h}", with: "\(height)")
+            return URL(string: urlString)
+        } else {
+            return URL(string: url)
+        }
     }
 }
