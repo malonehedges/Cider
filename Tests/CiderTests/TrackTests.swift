@@ -48,11 +48,6 @@ class TrackTests: XCTestCase {
         XCTAssertEqual(attributes.genreNames, ["Singer/Songwriter", "Music", "Blues"])
         XCTAssertEqual(attributes.name, "Something For the Pain")
 
-        // Play params
-        XCTAssertEqual(attributes.playParams?.id, "900032829")
-        XCTAssertEqual(attributes.playParams?.kind, "song")
-
-
         XCTAssertEqual(attributes.releaseDate, "2014-07-11")
         XCTAssertEqual(attributes.trackNumber, 7)
         XCTAssertEqual(attributes.url, URL(string: "https://itunes.apple.com/us/album/something-for-the-pain/id900032785?i=900032829")!)

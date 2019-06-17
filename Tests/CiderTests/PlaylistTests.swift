@@ -29,8 +29,6 @@ class PlaylistTests: XCTestCase {
         XCTAssertEqual(attributes?.lastModifiedDate, "2016-12-02T22:06:54Z")
         XCTAssertEqual(attributes?.curatorName, "Apple Music Pop")
         XCTAssertNotNil(attributes?.artwork)
-        XCTAssertEqual(attributes?.playParams?.id, "pl.f475b81eaf7546ffb8ffd20889f37032")
-        XCTAssertEqual(attributes?.playParams?.kind, "playlist")
 
         XCTAssertNotNil(playlist?.relationships?.curator.data)
         XCTAssertNotNil(playlist?.relationships?.tracks.data)
